@@ -1,6 +1,6 @@
 ---
 title: "Un Mariage Compromis"
-layout: "enquetes"
+layout: "enquete"
 ---
 
 Un mariage compromis...
