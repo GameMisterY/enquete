@@ -1,6 +1,14 @@
 <nav role="navigation">
   {{ $parts := split .RelPermalink "/" }}
-  {{ $base := delimit (first 2 $parts) "/" }}
+
+  {{ $production := eq (getenv "HUGO_ENV") "production" }}
+  {{ $base := "" }}
+  {{ if $production }}
+    {{ $base = delimit (first 3 $parts) "/" }}
+  {{ else }}
+    {{ $base = delimit (first 2 $parts) "/" }}
+  {{ end }}
+
   {{ $archive_path := printf "%s/archives" $base }}
   {{ $photos_path := printf "%s/photos" $base }}
   {{ $videos_path := printf "%s/videos" $base }}
