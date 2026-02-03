@@ -1,0 +1,8 @@
+<header>
+  {{ if not (eq .RelPermalink "/") }}
+    {{ partial "site-navigation.html" . }}
+  {{ end }}
+  <h1>
+    Header: {{ .Title }}
+  </h1>
+</header>

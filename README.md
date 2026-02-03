@@ -1,2 +1,2 @@
-# Game MisterY Site d'Enquettes
+# Game MisterY Site d'Enquêtes
 

@@ -1,4 +1,3 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://gamemistery.github.io'
 languageCode = 'fr-fr'
-title = 'Game MisterY'
-theme = 'ananke'
+title = 'Game Mister Y'

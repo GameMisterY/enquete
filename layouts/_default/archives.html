@@ -1,0 +1,18 @@
+{{ define "main" }}
+  {{ $base := printf "content/%s" .File.Dir }}
+
+  {{ .Content }}
+
+  <ul>
+    {{ range (readDir $base) }}
+      {{ if not (eq .Name "index.md") }}
+        {{ $basename := index (split .Name ".") 0}}
+        <li>
+          <a href="{{ printf "%s%s" $.RelPermalink .Name }}">
+            {{ $basename }}
+          </a>
+        </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+{{ end }}

@@ -1,0 +1,24 @@
+<nav role="navigation">
+  {{ $parts := split .RelPermalink "/" }}
+  {{ $base := delimit (first 2 $parts) "/" }}
+  {{ $archive_path := printf "%s/archives" $base }}
+  {{ $photos_path := printf "%s/photos" $base }}
+  {{ $videos_path := printf "%s/videos" $base }}
+
+  <a href="{{ $archive_path }}" class="">
+      <img src="" class="" alt="logo" />
+  </a>
+  <nav class="menu">
+    <ul class="menu-list menu-expanded">
+      <li class="menu-item">
+        <a class="menu-link" href="{{ $archive_path }}">Archives</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="{{ $photos_path }}">Photos</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="{{ $videos_path }}">Videos</a>
+      </li>
+    </ul>
+  </nav>
+</nav>

@@ -1,0 +1,17 @@
+{{ define "main" }}
+  {{ $base := printf "content/%s" .File.Dir }}
+
+  {{ .Content }}
+
+  <div>
+    {{ range (readDir $base) }}
+      {{ if not (eq .Name "index.md") }}
+        {{ $basename := index (split .Name ".") 0}}
+        {{ $src := printf "%s%s" $.RelPermalink .Name }}
+        <video width="320" height="240" controls>
+          <source src="{{ $src }}" type=video/mp4>
+        </video>
+      {{ end }}
+    {{ end }}
+  </ul>
+{{ end }}
