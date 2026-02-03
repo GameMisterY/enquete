@@ -1,7 +1,7 @@
 <nav role="navigation">
   {{ $parts := split .RelPermalink "/" }}
 
-  {{ $production := eq (getenv "HUGO_ENV") "production" }}
+  {{ $production := eq (getenv "HUGO_ENVIRONMENT") "production" }}
   {{ $base := "" }}
   {{ if $production }}
     {{ $base = delimit (first 3 $parts) "/" }}

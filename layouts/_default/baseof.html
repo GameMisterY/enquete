@@ -8,7 +8,7 @@
 
     {{ hugo.Generator }}
 
-    {{ $production := eq (getenv "HUGO_ENV") "production" | or (eq site.Params.env "production") }}
+    {{ $production := eq (getenv "HUGO_ENVIRONMENT") "production" | or (eq site.Params.env "production") }}
     {{ if $production }}
       <meta name="robots" content="index, follow">
     {{ else }}
