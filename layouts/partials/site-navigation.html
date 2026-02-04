@@ -1,4 +1,4 @@
-<nav role="navigation">
+<nav class="nav">
   {{ $parts := split .RelPermalink "/" }}
 
   {{ $production := eq (getenv "HUGO_ENVIRONMENT") "production" }}
@@ -13,20 +13,52 @@
   {{ $photos_path := printf "%s/photos" $base }}
   {{ $videos_path := printf "%s/videos" $base }}
 
-  <a href="{{ $archive_path }}" class="">
-      <img src="" class="" alt="logo" />
+  <a href="{{ $archive_path }}" class="nav-logo">
+      {{ $logo := resources.Get "logo.png" | fingerprint }}
+      {{ $logo := $logo.Resize "x50" }}
+      <img src="{{ $logo.Permalink }}" class="" alt="logo" />
   </a>
-  <nav class="menu">
-    <ul class="menu-list menu-expanded">
-      <li class="menu-item">
-        <a class="menu-link" href="{{ $archive_path }}">Archives</a>
-      </li>
-      <li class="menu-item">
-        <a class="menu-link" href="{{ $photos_path }}">Photos</a>
-      </li>
-      <li class="menu-item">
-        <a class="menu-link" href="{{ $videos_path }}">Videos</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="nav-title-and-list">
+
+    <h1 class="nav-title">
+      {{ .Title }}
+    </h1>
+    <div class="nav-list">
+        <a class="nav-link" href="{{ $archive_path }}">Archives</a>
+        <a class="nav-link" href="{{ $photos_path }}">Photos</a>
+        <a class="nav-link" href="{{ $videos_path }}">Videos</a>
+    </div>
+  </div>
+  <style>
+    .nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .nav-logo {
+      margin: 10px;
+    }
+    .nav-title-and-list {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .nav-title {
+
+    }
+    .nav-list {
+      margin: 20px;
+    }
+    .nav-link {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: black;
+    transition: transform 0.1s ease;
+    }
+    .nav-link:hover { color: darkgray; }
+  </style>
 </nav>

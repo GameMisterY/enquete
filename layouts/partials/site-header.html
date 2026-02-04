@@ -1,8 +1,38 @@
-<header>
-  {{ if not (eq .RelPermalink "/") }}
+<header class="header">
+  {{ if eq .RelPermalink "/" }}
+    <h1>Header: {{ .Title }}</h1>
+  {{ else }}
     {{ partial "site-navigation.html" . }}
   {{ end }}
-  <h1>
-    Header: {{ .Title }}
-  </h1>
 </header>
+<style>
+  .header {
+    top: 0;
+    position: sticky;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+    /*background-color: #e8d031ff;*/
+    background-color: #e6c79bff;
+    transition: all 1s ease;
+    will-change: contents;
+  }
+  .header-sticky {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 2s ease;
+    /*background: #e8d03140;*/
+    background: #e6c79b40;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+</style>
+<script>
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector(".header");
+    if (window.scrollY > 80) {
+      header.classList.add("header-sticky");
+    } else {
+      header.classList.remove("header-sticky");
+    }
+  });
+</script>

@@ -1,18 +1,75 @@
 {{ define "main" }}
   {{ $base := printf "content/%s" .File.Dir }}
 
-  {{ .Content }}
 
-  <ul>
-    {{ range (readDir $base) }}
-      {{ if not (eq .Name "index.md") }}
-        {{ $basename := index (split .Name ".") 0}}
-        <li>
-          <a href="{{ printf "%s%s" $.RelPermalink .Name }}">
-            {{ $basename }}
-          </a>
-        </li>
+  {{ $background_image := resources.Get "background.jpg" | fingerprint }}
+  {{ $background_image := $background_image.Resize "x4000" }}
+
+  {{ $folder_image := resources.Get "folder.svg" | fingerprint }}
+
+  <div class="archives">
+    <div class="archives-description">
+      {{ .Content }}
+    </div>
+    <div class="archives-folders-list">
+      {{ range (readDir $base) }}
+        {{ if not (eq .Name "index.md") }}
+          {{ $basename := index (split .Name ".") 0}}
+          {{ $folder_link := printf "%s%s" $.RelPermalink .Name }}
+            <a href="{{ $folder_link }}" class="archives-folder">
+                <img src="{{ $folder_image.Permalink }}"/>
+              <p>{{ title $basename }}</p>
+            </a>
+
+        {{ end }}
       {{ end }}
-    {{ end }}
-  </ul>
+    </div>
+  </div>
+  <style>
+    .archives {
+      background-image: url( {{ $background_image.Permalink  }});
+
+      width: 100%;
+      background-attachment: fixed;
+      background-position: center 0px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .archives-description {
+      color: white;
+      font-size: 2rem;
+      padding-top: 50px;
+    }
+    .archives-folders-list {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      justify-content: center;
+    }
+    .archives-folder {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      text-decoration: none;
+    }
+    .archives-folder img {
+      width: 200px;
+    }
+    .archives-folder img:hover {
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      transform: scale(1.1);
+    }
+
+    .archives-folder p {
+      width: 200px;
+      margin: 0px;
+      margin-top: 16px;
+      font-size: 2rem;
+    }
+  </style>
 {{ end }}

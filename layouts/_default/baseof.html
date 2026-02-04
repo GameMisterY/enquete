@@ -15,7 +15,7 @@
       <meta name="robots" content="noindex, nofollow">
     {{ end }}
 
-    <!-- {-{ partial "site-style.html" . }} -->
+    {{ partial "site-style.html" . }}
     <!-- {-{ partial "site-scripts.html" . }} -->
 
     <!-- {-{ block "favicon" . }} -->
@@ -30,7 +30,7 @@
     </main>
     {{ block "footer" . }}{{ partial "site-footer.html" . }}{{ end }}
   </body>
-  <script>
+<!--   <script>
    document.addEventListener("DOMContentLoaded", NavigationOnLoaded.call);
-  </script>
+  </script> -->
 </html>

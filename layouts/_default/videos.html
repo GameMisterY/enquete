@@ -1,17 +1,66 @@
 {{ define "main" }}
   {{ $base := printf "content/%s" .File.Dir }}
 
-  {{ .Content }}
+  {{ $background_image := resources.Get "background.jpg" | fingerprint }}
+  {{ $background_image := $background_image.Resize "x4000" }}
 
-  <div>
-    {{ range (readDir $base) }}
-      {{ if not (eq .Name "index.md") }}
-        {{ $basename := index (split .Name ".") 0}}
-        {{ $src := printf "%s%s" $.RelPermalink .Name }}
-        <video width="320" height="240" controls>
-          <source src="{{ $src }}" type=video/mp4>
-        </video>
+  <div class="videos">
+    <div class="videos-description">
+      {{ .Content }}
+    </div>
+    <div class="videos-list">
+      {{ range (readDir $base) }}
+        {{ if not (eq .Name "index.md") }}
+          {{ $basename := index (split .Name ".") 0}}
+          {{ $src := printf "%s%s" $.RelPermalink .Name }}
+          <video width="1240" controls>
+            <source src="{{ $src }}" type=video/mp4>
+          </video>
+        {{ end }}
       {{ end }}
-    {{ end }}
-  </ul>
+    </div>
+  </div>
+  <style>
+    .videos {
+      background-image: url( {{ $background_image.Permalink  }});
+      width: 100%;
+      background-attachment: fixed;
+      background-position: center 0px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .videos-description {
+      color: white;
+      font-size: 2rem;
+      padding-top: 50px;
+    }
+    .videos-list {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      justify-content: center;
+    }
+    .videos-list video {
+      /*padding: 50px;*/
+      /*display: flex;*/
+      /*flex-direction: column;*/
+      /*color: white;*/
+      /*text-decoration: none;*/
+      border-radius: 15px;
+      margin: 50px;
+    }
+    .photos-photo img {
+      width: 600px;
+      transition: box-shadow 3s ease, transform 0.3s ease;
+    }
+    .photos-photo img:hover {
+      box-shadow: 0 0 100px #00000080;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      transform: scale(1.05);
+    }
+  </style>
 {{ end }}

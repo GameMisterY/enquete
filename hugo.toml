@@ -1,3 +1,6 @@
 baseURL = 'https://gamemistery.github.io'
 languageCode = 'fr-fr'
 title = 'Game Mister Y'
+
+[params]
+  footer = 'MisterY'

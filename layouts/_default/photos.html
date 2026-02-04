@@ -1,16 +1,68 @@
 {{ define "main" }}
   {{ $base := printf "content/%s" .File.Dir }}
 
-  {{ .Content }}
+  {{ $background_image := resources.Get "background.jpg" | fingerprint }}
+  {{ $background_image := $background_image.Resize "x4000" }}
 
-  <div>
-    {{ range (readDir $base) }}
-      {{ if not (eq .Name "index.md") }}
-        {{ $basename := index (split .Name ".") 0}}
-        {{ $src := printf "%s%s" $.RelPermalink .Name }}
+  <div class="photos">
+    <div class="photos-description">
+      {{ .Content }}
+    </div>
 
-        <img src="{{ $src }}" alt={{ $basename }}/>
+    <div class="photos-list">
+      {{ range (readDir $base) }}
+        {{ if not (eq .Name "index.md") }}
+          {{ $basename := index (split .Name ".") 0}}
+          {{ $src := printf "%s%s" $.RelPermalink .Name }}
+          <div class="photos-photo">
+            <a href="{{ $src }}">
+              <img src="{{ $src }}" alt={{ $basename }}/>
+            </a>
+          </div>
+        {{ end }}
       {{ end }}
-    {{ end }}
-  </ul>
+    </div>
+  </div>
+  <style>
+    .photos {
+      background-image: url( {{ $background_image.Permalink  }});
+      width: 100%;
+      background-attachment: fixed;
+      background-position: center 0px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .photos-description {
+      color: white;
+      font-size: 2rem;
+      padding-top: 50px;
+    }
+    .photos-list {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      justify-content: center;
+    }
+    .photos-photo {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      text-decoration: none;
+    }
+    .photos-photo img {
+      width: 600px;
+      border-radius: 15px;
+      transition: box-shadow 3s ease, transform 0.3s ease;
+    }
+    .photos-photo img:hover {
+      box-shadow: 0 0 100px #00000080;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      transform: scale(1.05);
+    }
+  </style>
 {{ end }}
