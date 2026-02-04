@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ $base := printf "content/%s" .File.Dir }}
 
-  {{ $background_image := resources.Get "background.jpg" | fingerprint }}
+  {{ $background_image := resources.Get "background.png" | fingerprint }}
   {{ $background_image := $background_image.Resize "x4000" }}
 
   <div class="videos">
