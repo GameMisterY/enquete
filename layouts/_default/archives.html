@@ -11,12 +11,15 @@
     <div class="archives-description">
       {{ .Content }}
     </div>
+
+    {{ partial "overlay.html" . }}
+
     <div class="archives-folders-list">
       {{ range (readDir $base) }}
         {{ if not (eq .Name "index.md") }}
           {{ $basename := index (split .Name ".") 0}}
           {{ $folder_link := printf "%s%s" $.RelPermalink .Name }}
-            <a href="{{ $folder_link }}" class="archives-folder">
+              <a class="archives-folder" onclick="openOverlay({{ $folder_link }})">
                 <img src="{{ $folder_image.Permalink }}"/>
               <p>{{ title $basename }}</p>
             </a>
@@ -56,6 +59,7 @@
       flex-direction: column;
       color: white;
       text-decoration: none;
+      cursor: pointer;
     }
     .archives-folder img {
       width: 200px;

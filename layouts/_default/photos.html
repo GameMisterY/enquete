@@ -9,13 +9,15 @@
       {{ .Content }}
     </div>
 
+    {{ partial "overlay.html" . }}
+
     <div class="photos-list">
       {{ range (readDir $base) }}
         {{ if not (eq .Name "index.md") }}
           {{ $basename := index (split .Name ".") 0}}
           {{ $src := printf "%s%s" $.RelPermalink .Name }}
           <div class="photos-photo">
-            <a href="{{ $src }}">
+            <a onclick="openOverlay({{ $src }})">
               <img src="{{ $src }}" alt={{ $basename }}/>
             </a>
           </div>
@@ -55,6 +57,7 @@
       text-decoration: none;
     }
     .photos-photo img {
+      cursor:pointer;
       width: 600px;
       border-radius: 15px;
       transition: box-shadow 3s ease, transform 0.3s ease;

@@ -1,0 +1,92 @@
+<div class="overlay" id="overlay" >
+  <div class="overlay-popup">
+    <img id="overlay-img" src="">
+  </div>
+  <button class="overlay-close-button">&times;</button>
+</div>
+<script>
+  function openOverlay(source) {
+    if(source.endsWith(".png") || source.endsWith(".jpg") || source.endsWith(".jpeg")){
+      document.getElementById('overlay').classList.add('active');
+      document.getElementById('overlay-img').src = source;
+      document.body.classList.add("no-scroll");
+    } else {
+      window.location.href = source;
+    }
+  };
+
+  function closeOverlay(){
+    document.getElementById('overlay').classList.remove('active');
+    document.body.classList.remove("no-scroll");
+  }
+
+  const overlay   = document.getElementById('overlay');
+  const closeButton  = overlay.querySelector('.overlay-close-button');
+
+  closeButton.addEventListener('click', () => {
+    closeOverlay();
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeOverlay();
+  });
+</script>
+<style>
+  .overlay{
+    position: fixed;
+    inset:0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items:start;
+    justify-content:center;
+    z-index:1100;
+    overflow: auto;
+    opacity: 0;
+    visibility:hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .overlay.active{
+    visibility:visible;
+    opacity: 1;
+  }
+
+  .overlay-popup{
+    margin-top: 10vh;
+    max-width:80vw;
+    background-color: black;
+    border-radius: 20px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .overlay-popup img{
+    width:100%;
+    border-radius: 20px;
+    height:auto;
+    display:block;
+  }
+
+  .overlay-close-button{
+    position: fixed;
+    top: 10vh;
+    right: 10vh;
+
+    width:52px;
+    height:52px;
+    background:#fff;
+    border-radius:50%;
+    border:none;
+    cursor:pointer;
+    font-size:2rem;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    transition:background 0.2s;
+  }
+
+  .overlay-close-button:hover{
+    background:#eee;
+  }
+</style>
