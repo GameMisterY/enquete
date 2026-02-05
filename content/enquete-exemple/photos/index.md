@@ -1,5 +1,5 @@
 ---
-title: "Enquete Exemple - Photos"
+title: "Enquête Exemple - Photos"
 layout: "photos"
 ---
 

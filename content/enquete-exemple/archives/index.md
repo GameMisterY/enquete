@@ -1,5 +1,5 @@
 ---
-title: "Enquete Exemple - Archives"
+title: "Enquête Exemple - Archives"
 layout: "archives"
 ---
 

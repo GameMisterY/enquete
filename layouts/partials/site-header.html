@@ -1,8 +1,12 @@
 <header class="header">
-  {{ if eq .RelPermalink "/" }}
-    <h1>Header: {{ .Title }}</h1>
-  {{ else }}
+  {{
+    if (strings.Contains .RelPermalink "/archives")
+      | or (strings.Contains .RelPermalink "/photos")
+      | or (strings.Contains .RelPermalink "/video")
+  }}
     {{ partial "site-navigation.html" . }}
+  {{ else }}
+    <h1>{{ .Title }}</h1>
   {{ end }}
 </header>
 <style>
@@ -19,6 +23,7 @@
   }
   .header h1 {
     color: white;
+    text-align: center;
   }
   .header-sticky {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
