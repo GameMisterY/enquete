@@ -1,6 +1,7 @@
 ---
 title: "Enquête Exemple - Photos"
-layout: "photos"
+layout: "affichage-en-photos"
+order: 1
 ---
 
 Voici les photos...

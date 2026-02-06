@@ -1,19 +1,5 @@
 <nav class="nav">
-  {{ $parts := split .RelPermalink "/" }}
-
-  {{ $production := eq (getenv "HUGO_ENVIRONMENT") "production" }}
-  {{ $base := "" }}
-  {{ if $production }}
-    {{ $base = delimit (first 3 $parts) "/" }}
-  {{ else }}
-    {{ $base = delimit (first 2 $parts) "/" }}
-  {{ end }}
-
-  {{ $archive_path := printf "%s/archives" $base }}
-  {{ $photos_path := printf "%s/photos" $base }}
-  {{ $videos_path := printf "%s/videos" $base }}
-
-  <a href="{{ $archive_path }}" class="nav-logo">
+  <a href="{{ .Parent.RelPermalink }}" class="nav-logo">
       {{ $logo := resources.Get "logo.png" | fingerprint }}
       {{ $logo := $logo.Resize "x50" }}
       <img src="{{ $logo.Permalink }}" class="" alt="logo" />
@@ -23,10 +9,16 @@
     <h1 class="nav-title">
       {{ .Title }}
     </h1>
+
+    {{ $pages := .Parent.Pages }}
+    {{ $pages = sort $pages ".Params.order"}}
+
     <div class="nav-list">
-        <a class="nav-link" href="{{ $archive_path }}">Archives</a>
-        <a class="nav-link" href="{{ $photos_path }}">Photos</a>
-        <a class="nav-link" href="{{ $videos_path }}">Videos</a>
+      {{ range $pages }}
+        {{ $parts := split .Path "/" }}
+        {{ $name := title (index $parts 2) }}
+        <a class="nav-link" href="{{ .RelPermalink }}">{{$name}}</a>
+      {{ end }}
     </div>
   </div>
   <style>

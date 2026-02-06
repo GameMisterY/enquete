@@ -1,10 +1,3 @@
 ---
-password: "1234"
-title: "Enquête 2"
-success_message: "Bravo !"
-error_message: "Mauvais mot de passe !"
-placeholder: "1234"
-layout: "lock"
+layout: "affichage-mot-de-passe"
 ---
-
-Entrez le mot de passe

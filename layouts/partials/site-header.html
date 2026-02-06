@@ -1,9 +1,15 @@
 <header class="header">
-  {{
-    if (strings.Contains .RelPermalink "/archives")
-      | or (strings.Contains .RelPermalink "/photos")
-      | or (strings.Contains .RelPermalink "/video")
-  }}
+  {{ $parts := split .RelPermalink "/" }}
+
+  {{ $production := eq (getenv "HUGO_ENVIRONMENT") "production" }}
+  {{ $use_navigation := false }}
+  {{ if $production }}
+    {{ $use_navigation = gt (len $parts) 4 }}
+  {{ else }}
+    {{ $use_navigation = gt (len $parts) 3 }}
+  {{ end }}
+
+  {{ if $use_navigation }}
     {{ partial "site-navigation.html" . }}
   {{ else }}
     <h1>{{ .Title }}</h1>

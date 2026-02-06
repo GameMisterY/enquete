@@ -1,5 +1,12 @@
 # Game MisterY Site d'Enquêtes
 
+### Liens
+
+Les enqûetes disponibles sont listé ici:
+
+https://gamemistery.github.io/enquete/liens
+
+
 ### Créer une nouvelle enquête `MonEnquete`
 
 1. Créez un nouveau fichier `content/MonEnquete/_index.md` (`_index` avec un tiret du 8 !)
@@ -24,51 +31,31 @@ layout: "lock"
 MonMessage
   ```
 
-2. Créez un nouveau fichier `content/MonEnquete/archives/index.md` avec le contenu suivant :
+2. Créez un nouveau fichier `content/MonEnquete/MonDossier/index.md` avec le contenu suivant :
 ```md
 ---
-title: "MonTitreEnqueteArchives"
-layout: "archives"
+title: "MonTitre"
+layout: "affichage-en-dossiers"
 ---
 
-MaDescriptionEnqueteArchives
+MaDescription
 ```
+`affichage-en-dossiers` peux être remplacé par :
+* `affichage-en-photos`
+* `affichage-en-videos`
 
-3. Créez un nouveau fichier `content/MonEnquete/photos/index.md` avec le contenu suivant :
-```md
----
-title: "MonTitreEnquetePhotos"
-layout: "photos"
----
 
-MaDescriptionEnquetePhotos
-```
+3. (Optionel) Ajoutez des fichiers dans `content/NomEnquete/MonDossier/` pour créer des nouveaux dossiers.
 
-4. Créez un nouveau fichier `content/MonEnquete/videos/index.md` avec le contenu suivant :
-```md
----
-title: "MonTitreEnqueteVideos"
-layout: "videos"
----
-
-MaDescriptionEnqueteVideos
-```
-
-5. (Optionel) Ajoutez des fichiers dans `content/NomEnquete/archives/` pour créer des nouveaux dossiers.
-
-> NOTE: le nom du fichier sera le nom du dossier.
-
-6. (Optionel) Ajoutez des photos dans `content/NomEnquete/photos/`
-
-7. (Optionel) Ajoutez des vidéos dans `content/NomEnquete/videos/`
-
-> NOTE: Format `.mp4`
+> NOTE: en affichage-en-dossiers le nom du fichier sera le nom du dossier.
+> NOTE: le affichage-en-videos acepte uniquement le format mp4.
+> NOTE: le affichage-en-photos acepte uniquement les formats jpeg, jpg et png.
 
 L'enquête est maintenant créée avec le lien https://gamemistery.github.io/enquete/MonEnquete/
 
 ### TODO Développement
 - [x] Mot de passe de protection
-- [ ] Ouvertures des photos sur le site
+- [x] Ouvertures des photos sur le site
 - [ ] Mode téléphone
 
 

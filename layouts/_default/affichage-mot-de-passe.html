@@ -1,15 +1,8 @@
 {{ define "main" }}
-  {{ $parts := split .RelPermalink "/" }}
+  {{ $pages := .Pages }}
+  {{ $pages = sort $pages ".Params.order"}}
+  {{ $first_page := index $pages 0 }}
 
-  {{ $production := eq (getenv "HUGO_ENVIRONMENT") "production" }}
-  {{ $base := "" }}
-  {{ if $production }}
-    {{ $base = delimit (first 3 $parts) "/" }}
-  {{ else }}
-    {{ $base = delimit (first 2 $parts) "/" }}
-  {{ end }}
-
-  {{ $archive_path := printf "%s/archives" $base }}
 
   <div class="lock">
     <div class="lock-zone">
@@ -28,7 +21,7 @@
   <script>
     {{if not (isset .Params "password") }}
       document.addEventListener('DOMContentLoaded', function() {
-        window.location.href = {{$archive_path}};
+        window.location.href = {{$first_page.RelPermalink}};
       });
     {{ end }}
 
@@ -49,7 +42,7 @@
         messageBox.classList.add('success', 'show');
 
         setTimeout(() => {
-          window.location.href = {{$archive_path}};
+          window.location.href = {{$first_page.RelPermalink}};
         }, 1000);
       } else {
 

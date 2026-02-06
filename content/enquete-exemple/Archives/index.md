@@ -1,6 +1,7 @@
 ---
 title: "Enquête Exemple - Archives"
-layout: "archives"
+layout: "affichage-en-dossiers"
+order: 2
 ---
 
 Archives...
