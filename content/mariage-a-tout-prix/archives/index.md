@@ -1,6 +1,6 @@
 ---
 title: "Mariage a tout prix - Dossiers"
-layout: "dossiers"
+layout: "archives"
 ---
 
 dossiers d'enquête
