@@ -51,7 +51,9 @@ MaDescription
 2. (Optionel) Ajoutez des fichiers dans `content/NomEnquete/MonOnglet/` pour créer des nouveaux dossiers.
 
 > NOTE: en affichage-en-dossiers le nom du fichier sera le nom du dossier.
+
 > NOTE: le affichage-en-videos acepte uniquement le format mp4.
+
 > NOTE: le affichage-en-photos acepte uniquement les formats jpeg, jpg et png.
 
 L'enquête est maintenant créée avec le lien https://gamemistery.github.io/enquete/MonEnquete/
