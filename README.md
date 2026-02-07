@@ -10,14 +10,15 @@ https://gamemistery.github.io/enquete/liens
 ### Créer une nouvelle enquête `MonEnquete`
 
 1. Créez un nouveau fichier `content/MonEnquete/_index.md` (`_index` avec un tiret du 8 !)
-  a. Pour un enquête sans mot de passe: modifiez le contenu avec:
+
+a. Pour un enquête sans mot de passe: modifiez le contenu avec:
 ```md
 ---
 layout: "lock"
 ---
 ```
 
-  b. Pour un enquête avec mot de passe: modifier le contenu avec:
+b. Pour un enquête avec mot de passe: modifier le contenu avec:
 ```md
 ---
 password: "MonMotDePasse"
