@@ -1,11 +1,11 @@
 <nav class="nav">
-  <a href="{{ .Parent.RelPermalink }}" class="nav-logo">
-      {{ $logo := resources.Get "logo.png" | fingerprint }}
-      {{ $logo := $logo.Resize "x50" }}
-      <img src="{{ $logo.Permalink }}" class="" alt="logo" />
-  </a>
-  <div class="nav-title-and-list">
+  <div class="nav-title-and-logo">
 
+    <a href="{{ .Parent.RelPermalink }}" class="nav-logo">
+        {{ $logo := resources.Get "logo.png" | fingerprint }}
+        {{ $logo := $logo.Resize "x50" }}
+        <img src="{{ $logo.Permalink }}" class="" alt="logo" />
+    </a>
     <h1 class="nav-title">
       {{ .Title }}
     </h1>
@@ -13,35 +13,41 @@
     {{ $pages := .Parent.Pages }}
     {{ $pages = sort $pages ".Params.order"}}
 
-    <div class="nav-list">
-      {{ range $pages }}
-        {{ $parts := split .Path "/" }}
-        {{ $name := title (index $parts 2) }}
-        <a class="nav-link" href="{{ .RelPermalink }}">{{$name}}</a>
-      {{ end }}
-    </div>
+  </div>
+  <div class="nav-list">
+    {{ range $pages }}
+      {{ $parts := split .Path "/" }}
+      {{ $name := title (index $parts 2) }}
+      <a class="nav-link" href="{{ .RelPermalink }}">{{$name}}</a>
+    {{ end }}
   </div>
   <style>
     .nav {
       display: flex;
       flex-direction: row;
-      align-items: center;
     }
     .nav-logo {
       margin: 10px;
     }
-    .nav-title-and-list {
+    .nav-title-and-logo {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       width: 100%;
+      flex: 1;
     }
+
     .nav-title {
       color: white;
     }
     .nav-list {
-      margin: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 20px;
+      flex: 1;
+      align-items: center;
+      justify-content: flex-start;
     }
     .nav-link {
       padding: 15px;
@@ -52,5 +58,20 @@
       transition: transform 0.1s ease;
     }
     .nav-link:hover { color: darkgray; }
+    @media (max-width: 500px) {
+      .nav {
+        flex-direction: column;
+      }
+      .nav-list {
+        margin: 0;
+        justify-content: space-evenly;
+      }
+      .nav-title {
+        font-size: 1.3rem;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+      }
+    }
   </style>
 </nav>
