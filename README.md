@@ -11,14 +11,14 @@ https://gamemistery.github.io/enquete/liens
 
 1. Créez un nouveau fichier `content/MonEnquete/_index.md` (`_index` avec un tiret du 8 !)
 
-a. Pour un enquête sans mot de passe: modifiez le contenu avec:
+a. Pour une enquête sans mot de passe: modifiez le contenu avec:
 ```md
 ---
-layout: "lock"
+layout: "affichage-mot-de-passe"
 ---
 ```
 
-b. Pour un enquête avec mot de passe: modifier le contenu avec:
+b. Pour une enquête avec mot de passe: modifier le contenu avec:
 ```md
 ---
 password: "MonMotDePasse"
@@ -26,13 +26,14 @@ title: "MonTitreEnquete"
 success_message: "MonMessageBravo"
 error_message: "MonMessageMauvaisMotDePasse !"
 placeholder: "1234"
-layout: "lock"
+layout: "affichage-mot-de-passe"
 ---
 
 MonMessage
   ```
+### Ajouter un onglet `MonOnglet` à l'enquête 
 
-2. Créez un nouveau fichier `content/MonEnquete/MonDossier/index.md` avec le contenu suivant :
+1. Créez un nouveau fichier `content/MonEnquete/MonOnglet/index.md` avec le contenu suivant :
 ```md
 ---
 title: "MonTitre"
@@ -41,12 +42,13 @@ layout: "affichage-en-dossiers"
 
 MaDescription
 ```
+
 `affichage-en-dossiers` peux être remplacé par :
 * `affichage-en-photos`
 * `affichage-en-videos`
 
 
-3. (Optionel) Ajoutez des fichiers dans `content/NomEnquete/MonDossier/` pour créer des nouveaux dossiers.
+2. (Optionel) Ajoutez des fichiers dans `content/NomEnquete/MonOnglet/` pour créer des nouveaux dossiers.
 
 > NOTE: en affichage-en-dossiers le nom du fichier sera le nom du dossier.
 > NOTE: le affichage-en-videos acepte uniquement le format mp4.
