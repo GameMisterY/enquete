@@ -1,5 +1,5 @@
 ---
-password: "MonMotDePasse"
+password: "Plume d'oie"
 title: "MonTitreEnquete"
 success_message: "MonMessageBravo"
 error_message: "MonMessageMauvaisMotDePasse !"
