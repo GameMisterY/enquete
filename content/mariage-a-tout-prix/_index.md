@@ -1,10 +1,10 @@
 ---
 password: "Plume d'oie"
-title: "MonTitreEnquete"
-success_message: "MonMessageBravo"
-error_message: "MonMessageMauvaisMotDePasse !"
+title: "Dossier suspects"
+success_message: "Bravo"
+error_message: "Mauvais Mot De Passe !"
 placeholder: "1234"
 layout: "affichage-mot-de-passe"
 ---
 
-MonMessage
+code d'accès
