@@ -1,8 +1,8 @@
 ---
 password: "Plume d'oie"
-title: "Dossier suspects"
+title: "dossiers des suspect"
 success_message: "Bravo"
-error_message: "Mauvais Mot De Passe !"
+error_message: "ERREUR !"
 placeholder: "1234"
 layout: "affichage-mot-de-passe"
 ---
