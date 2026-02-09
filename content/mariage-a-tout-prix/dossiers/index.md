@@ -1,5 +1,5 @@
 ---
-title: "Mariage à tout prix - Dossiers"
+title: "Mariage à tout prix"
 layout: "affichage-en-dossiers"
 order: 3
 ---
