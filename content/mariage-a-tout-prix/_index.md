@@ -1,5 +1,5 @@
 ---
-password: "123"
+password: "Plume d'oie"
 title: "dossiers des suspect"
 success_message: "Bravo"
 error_message: "ERREUR !"
