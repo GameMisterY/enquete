@@ -32,7 +32,7 @@
       event.preventDefault();
 
       let password = "{{ .Params.password }}";
-      if(passwordInput.value.trim() === password){
+      if(passwordInput.value.replace(/[\u2019]/g, "'").trim() === password){
 
         messageBox.textContent = "{{ .Params.success_message }}";
         messageBox.className = 'lock-message';
