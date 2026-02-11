@@ -31,11 +31,7 @@
     document.getElementById('lock-form').addEventListener('submit', function(event) {
       event.preventDefault();
 
-
-      if(passwordInput.value.trim() === {{ .Params.password }}){
-
-        "Tu as trouvé le mot de passe !";
-        "Maintenant fait mine de n'avoir rien vu et trouve le mot de passe de manière honnête !!!";
+      if(passwordInput.value.trim() === "{{ .Params.password }}"){
 
         messageBox.textContent = {{ .Params.success_message }};
         messageBox.className = 'lock-message';

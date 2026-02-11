@@ -17,11 +17,6 @@
     {{ end }}
 
     {{ partial "site-style.html" . }}
-    <!-- {-{ partial "site-scripts.html" . }} -->
-
-    <!-- {-{ block "favicon" . }} -->
-      <!-- {-{ partialCached "site-favicon.html" . }} -->
-    <!-- {-{ end }} -->
   </head>
 
   <body class="body">
@@ -31,7 +26,4 @@
     </main>
     {{ block "footer" . }}{{ partial "site-footer.html" . }}{{ end }}
   </body>
-<!--   <script>
-   document.addEventListener("DOMContentLoaded", NavigationOnLoaded.call);
-  </script> -->
 </html>
