@@ -21,7 +21,7 @@
   <script>
     {{if not (isset .Params "password") }}
       document.addEventListener('DOMContentLoaded', function() {
-        window.location.href = {{$first_page.RelPermalink}};
+        window.location.href = "{{$first_page.RelPermalink}}";
       });
     {{ end }}
 
@@ -31,18 +31,27 @@
     document.getElementById('lock-form').addEventListener('submit', function(event) {
       event.preventDefault();
 
-      if(passwordInput.value.trim() === "{{ .Params.password }}"){
+      let password = "{{ .Params.password }}";
+      alert(
+            "Le mot de passe entrée est: " + passwordInput.value.trim() + "\n"+
+            "Le mot de passe attendu est: " + password + "\n" +
+            "Egalité: " + (passwordInput.value.trim() === password) + "\n" +
+            "Test1: " + "{{ .Params.password }}" + "\n" +
+            "Test2: " + "{{ .Params.password | jsonify }}" + "\n" +
+            "Test3: " + "{{ printf "%q" .Params.password }}" + "\n"
+      );
+      if(passwordInput.value.trim() === password){
 
-        messageBox.textContent = {{ .Params.success_message }};
+        messageBox.textContent = "{{ .Params.success_message }}";
         messageBox.className = 'lock-message';
         messageBox.classList.add('success', 'show');
 
         setTimeout(() => {
-          window.location.href = {{$first_page.RelPermalink}};
+          window.location.href = "{{$first_page.RelPermalink}}";
         }, 1000);
       } else {
 
-        messageBox.textContent = {{ .Params.error_message }};
+        messageBox.textContent = "{{ .Params.error_message }}";
         messageBox.className = 'lock-message';
         messageBox.classList.add('error', 'show');
 
