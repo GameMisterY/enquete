@@ -1,10 +1,8 @@
 ---
-password: "Plume d'oie"
-title: "dossiers des suspect"
-success_message: "Bravo"
-error_message: "ERREUR !"
-placeholder: "ABCD"
-layout: "affichage-mot-de-passe"
+title: "Mariage à tout prix"
+layout: "affichage-en-dossiers"
+order: 3
 ---
 
-code d'accès
+Dossiers d'enquête
+
