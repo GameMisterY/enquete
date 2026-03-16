@@ -46,6 +46,7 @@ MaDescription
 `affichage-en-dossiers` peux être remplacé par :
 * `affichage-en-photos`
 * `affichage-en-videos`
+* `affichage-en-genially`
 
 
 2. (Optionel) Ajoutez des fichiers dans `content/NomEnquete/MonOnglet/` pour créer des nouveaux dossiers.
@@ -58,9 +59,22 @@ MaDescription
 
 L'enquête est maintenant créée avec le lien https://gamemistery.github.io/enquete/MonEnquete/
 
+### Affichage en genially
+
+Pour créer un onglet avec un genially intégré:
+1. Créez un nouveau fichier `content/MonEnquete/MonOngletGenially/index.md`
+```
+---
+title: "MonTitre"
+layout: "affichage-en-genially"
+link: "https://lien-du-genially"
+---
+```
+
+
 ### TODO Développement
 - [x] Mot de passe de protection
 - [x] Ouvertures des photos sur le site
-- [ ] Mode téléphone
+- [x] Mode téléphone
 
 

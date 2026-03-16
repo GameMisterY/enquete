@@ -31,7 +31,7 @@
     document.getElementById('lock-form').addEventListener('submit', function(event) {
       event.preventDefault();
 
-      let password = "{{ .Params.password }}";
+      const password = "{{ .Params.password }}";
       if(passwordInput.value.replace(/[\u2019]/g, "'").trim() === password){
 
         messageBox.textContent = "{{ .Params.success_message }}";
