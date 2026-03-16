@@ -63,7 +63,7 @@ L'enquête est maintenant créée avec le lien https://gamemistery.github.io/enq
 
 Pour créer un onglet avec un genially intégré:
 1. Créez un nouveau fichier `content/MonEnquete/MonOngletGenially/index.md`
-```
+```md
 ---
 title: "MonTitre"
 layout: "affichage-en-genially"
