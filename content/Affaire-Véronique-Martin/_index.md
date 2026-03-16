@@ -1,9 +1,9 @@
 ---
-password: "Plume d'oie"
-title: "dossiers des suspect"
-success_message: "Bravo"
+password: "Z52Mxp8fr"
+title: "dossiers Véronique martin"
+success_message: "Accès autorisé"
 error_message: "ERREUR !"
-placeholder: "ABCD"
+placeholder: "code d'accès"
 layout: "affichage-mot-de-passe"
 ---
 
