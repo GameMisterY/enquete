@@ -6,5 +6,3 @@ icon: victime.png
 order: 1
 ---
 
-
-Aucun document...
