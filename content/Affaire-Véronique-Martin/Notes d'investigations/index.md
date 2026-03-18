@@ -1,7 +1,7 @@
 ---
 title: "Notes d’investigation."
 layout: "affichage-en-genially"
-link: "https://view.genially.com/69bae04f82361fa17c79d19b"
+link: "https://view.genially.com/69bb062bb775300d6f89dc14"
 icon: oeuil.png
 order: 7
 ---
