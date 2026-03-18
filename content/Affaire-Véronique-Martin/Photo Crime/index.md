@@ -6,4 +6,3 @@ order: 3
 ---
 
 
-Aucune photo...
