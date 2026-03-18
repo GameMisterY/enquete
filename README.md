@@ -96,3 +96,16 @@ link: "https://lien-du-genially"
 - [x] Header sous forme de bar latéral
 - [x] Autoriser le contenu full-page
 
+
+
+memo code Analyse d'indices:
+
+---
+title: "Analyse d'indices"
+layout: "affichage-en-photos"
+icon: loupe.png
+order: 6
+---
+
+
+Aucun indice...
