@@ -48,6 +48,23 @@ MaDescription
 * `affichage-en-videos`
 * `affichage-en-genially`
 
+Des paramètres optionnels peuvent être ajoutés:
+* `order` permet de définir l'ordre des onglets
+* `sidebar: false` permet de ne pas afficher la barre latérale (utile quand il n'y a qu'un onglet)
+* `subtitle` permet de définir le sous-titre affiché dans la barre latérale pour cet onglet
+* `icon` permet de définir l'icône affiché dans la barre latéral pour cet onglet (Les icônes sont placés dans le dossier `assets/icons`) Mettre uniquement le nom de l'icône. Pax example `icon: suspect.png` utilisera l'icône dans `assets/icons/suspect.png`.
+
+Example:
+```md
+---
+title: "MonTitre"
+subtitle: "MonSousTitre"
+layout: "affichage-en-dossiers"
+order: 3
+sidebar: false
+icon: suspect.png
+---
+```
 
 2. (Optionel) Ajoutez des fichiers dans `content/NomEnquete/MonOnglet/` pour créer des nouveaux dossiers.
 
@@ -76,5 +93,6 @@ link: "https://lien-du-genially"
 - [x] Mot de passe de protection
 - [x] Ouvertures des photos sur le site
 - [x] Mode téléphone
-
+- [x] Header sous forme de bar latéral
+- [x] Autoriser le contenu full-page
 

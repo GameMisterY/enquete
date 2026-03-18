@@ -1,6 +1,6 @@
 ---
 password: "Plume d'oie"
-title: "dossiers des suspect"
+title: "Mariage à tout prix"
 success_message: "Bravo"
 error_message: "ERREUR !"
 placeholder: "ABCD"

@@ -1,6 +1,7 @@
 ---
-title: "Enquête 2 - Dossier 1"
+title: "Dossier 1"
 layout: "affichage-en-dossiers"
+icon: pc.png
 order: 1
 ---
 

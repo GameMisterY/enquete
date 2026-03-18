@@ -1,6 +1,9 @@
 ---
-title: "Enquête Exemple - Photos"
+title: "Photos"
+subtitle: "Photo indices"
+
 layout: "affichage-en-photos"
+icon: photo.png
 order: 1
 ---
 

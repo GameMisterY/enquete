@@ -4,14 +4,15 @@
   {{ $background_image := resources.Get "background.png" | fingerprint }}
   {{ $background_image := $background_image.Resize "x4000" }}
 
+  {{ $show_sidebar := not (eq .Params.sidebar false) }}
+
   <div class="genially">
-    <iframe id="genially-iframe" title="MisterY" frameborder="0" width="1000" height="400" style="position: absolute; top: 0px; left: 0; width: 100%; height: 100%;" src={{.Params.link}} type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all"></iframe>
+    <iframe id="genially-iframe" title="MisterY" frameborder="0" width="1000" height="400" style="top: 0px; left: 0; width: 100%; height: 100%;" src={{.Params.link}} type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all"></iframe>
   </div>
   <style>
     .genially {
       background-image: url( {{ $background_image.Permalink  }});
-
-      width: 100%;
+      /*width: 100%;*/
       background-attachment: fixed;
       background-position: center 0px;
       background-size: cover;
@@ -20,11 +21,20 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
+      /*justify-content: center;*/
+      {{ if $show_sidebar }}
+        padding-left: 20rem;
+      {{ end }}
     }
     .genially-content {
       color: white;
       font-size: 2rem;
       padding-top: 50px;
+    }
+    @media (max-width: 500px) {
+      .genially {
+        padding-left: 0rem;
+      }
     }
   </style>
   <script>
@@ -47,5 +57,5 @@
 
     document.addEventListener('DOMContentLoaded', updateIframeStyle);
     window.addEventListener('resize', updateIframeStyle);
-  </script>
+   </script>
 {{ end }}

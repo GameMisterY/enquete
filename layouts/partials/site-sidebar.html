@@ -1,0 +1,116 @@
+<div id="siteSideBar" class="sidebar">
+  {{ $parts := split .RelPermalink "/" }}
+  {{ $use_navigation := gt (len $parts) 4}}
+
+  {{ if $use_navigation }}
+    {{ $pages := .Parent.Pages }}
+    {{ $pages = sort $pages ".Params.order"}}
+
+    <div class="sidebar-list">
+      {{ range $pages }}
+        {{ $parts := split .Path "/" }}
+        {{ $name := title (index $parts 2) }}
+        <a class="sidebar-item" href="{{ .RelPermalink }}">
+          {{with .Params.icon}}
+           <div class="sidebar-item-icon">
+              {{ $iconName := printf "icons/%s" . }}
+              {{ $logo := resources.Get $iconName | fingerprint }}
+              {{ $logo := $logo.Resize "x50" }}
+              <img src="{{ $logo.Permalink }}" class="" alt="icon" />
+          </div>
+          {{ end }}
+          <div class="sidebar-item-content">
+            <h3>{{ .Params.title }}</h3>
+            <h4>{{ .Params.subtitle }}</h4>
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
+</div>
+<style>
+  .sidebar {
+
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 20rem;
+    background-color: black;
+    height: 100%;
+    /*z-index: 1100;*/
+    /*transform: translateX(-20rem);*/
+    background: #000000cc;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /*border-right: 1px;*/
+    border-color: white;
+    /*border-width: 13px;*/
+    /*border-style: solid;*/
+    border-right: solid 1px;
+  }
+  .sidebar.active {
+    /*width: 0px;*/
+    transition: transform  0.3s ease;
+    transform: translateX(0rem);
+  }
+  .sidebar-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-item {
+    display: flex;
+    flex-direction: row;
+    color: white;
+     text-decoration: none;
+     /*justify-content: center;*/
+     align-items: center;
+     padding: 1rem;
+     gap: 1rem;
+  }
+
+  .sidebar-item:hover {
+    color: darkgray;
+    h3 {
+      text-decoration: underline;
+    }
+  }
+  .sidebar-item-icon {
+
+  }
+  .sidebar-item-content {
+
+  }
+  .sidebar-item-content h3 {
+    font-size: 1.25rem;
+    color: #DCA80B;
+    margin-bottom: 10px;
+  }
+  .sidebar-item-content h4 {
+    font-weight: 400;
+    margin: 0px;
+  }
+
+  @media (max-width: 500px) {
+    .sidebar {
+      transform: translateX(-20rem);
+    }
+</style>
+<script>
+  function updateSideBarTop() {
+    const header = document.querySelector('.header');
+    const sideBar = document.querySelector('#siteSideBar');
+
+    if (!header || !sideBar) {
+      return;
+    }
+
+    const headerHeight = header.offsetHeight;
+    const remainingHeight = window.innerHeight - headerHeight;
+
+    sideBar.style.top = `${headerHeight}px`;
+    sideBar.style.height = `${remainingHeight}px`;
+  }
+
+  document.addEventListener('DOMContentLoaded', updateSideBarTop);
+  window.addEventListener('resize', updateSideBarTop);
+</script>

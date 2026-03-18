@@ -24,6 +24,17 @@
     <main class="main">
       {{ block "main" . }}{{ end }}
     </main>
+
+    {{ $parts := split .RelPermalink "/" }}
+    {{ $use_navigation := gt (len $parts) 4}}
+
+    {{ if $use_navigation }}
+      {{ $show_sidebar := not (eq .Params.sidebar false) }}
+      {{ if $show_sidebar }}
+        {{ block "sidebar" .}} {{ partial "site-sidebar.html" .}}{{ end }}
+      {{ end }}
+    {{ end }}
+
     {{ block "footer" . }}{{ partial "site-footer.html" . }}{{ end }}
   </body>
 </html>

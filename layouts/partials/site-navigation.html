@@ -1,26 +1,34 @@
 <nav class="nav">
   <div class="nav-title-and-logo">
 
+    <div class="nav-burger" href="/" id="siteBurgerButton">
+      <span class="nav-burger-bar"></span>
+      <span class="nav-burger-bar"></span>
+      <span class="nav-burger-bar"></span>
+    </div>
+
     <a href="{{ .Parent.RelPermalink }}" class="nav-logo">
         {{ $logo := resources.Get "logo.png" | fingerprint }}
         {{ $logo := $logo.Resize "x50" }}
         <img src="{{ $logo.Permalink }}" class="" alt="logo" />
     </a>
+
+
     <h1 class="nav-title">
-      {{ .Title }}
+      {{ .Parent.Title }}
     </h1>
 
     {{ $pages := .Parent.Pages }}
     {{ $pages = sort $pages ".Params.order"}}
 
   </div>
-  <div class="nav-list">
+<!--   <div class="nav-list">
     {{ range $pages }}
       {{ $parts := split .Path "/" }}
       {{ $name := title (index $parts 2) }}
       <a class="nav-link" href="{{ .RelPermalink }}">{{$name}}</a>
     {{ end }}
-  </div>
+  </div> -->
   <style>
     .nav {
       display: flex;
@@ -40,6 +48,8 @@
 
     .nav-title {
       color: white;
+
+      flex: 1; /* to remove if re-enable nav-list  */
     }
     .nav-list {
       display: flex;
@@ -58,8 +68,54 @@
       transition: transform 0.1s ease;
     }
     .nav-link:hover { color: darkgray; }
+
+    /* Burger Menu */
+
+    .nav-burger {
+      display: none;
+      width: 24px;
+      height: 24px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      /*z-index: 1200;*/
+      margin: 2rem;
+      margin-right: 0px;
+      /*visibility: hidden;*/
+    }
+
+    .nav-burger:hover {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-burger span {
+      display: block;
+      height: 2px;
+      width: 24px;
+      top: 0;
+      bottom: 0;
+      border-radius: 2px;
+      background: white;
+      transition: all 0.3s ease;
+    }
+
+    .nav-burger.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-burger.active span:nth-child(2) {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+
+    .nav-burger.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
     @media (max-width: 500px) {
-      .nav {
+ /*     .nav {
         flex-direction: column;
       }
       .nav-list {
@@ -71,7 +127,55 @@
         display: flex;
         flex: 1;
         justify-content: center;
+      }*/
+      .nav-burger{
+        display: flex;
+      }
+      .nav-logo {
+        display: none
       }
     }
   </style>
+  <script>
+    var justOpen = false
+    function closeSideBarOnClickOuside(event){
+      if (!event.target.closest("#siteSideBar")) {
+        if(justOpen){
+          justOpen = false;
+        } else{
+          closeSideBar();
+        }
+      }
+    }
+
+    function closeSideBar(){
+      const burgerBtn = document.getElementById('siteBurgerButton');
+      const sideBar = document.getElementById('siteSideBar');
+
+      burgerBtn.classList.remove('active');
+      sideBar.classList.remove('active');
+    }
+
+    function openSideBar(){
+      const burgerBtn = document.getElementById('siteBurgerButton');
+      const sideBar = document.getElementById('siteSideBar');
+
+      burgerBtn.classList.add('active');
+      sideBar.classList.add('active');
+      justOpen = true;
+    }
+
+    document.addEventListener("click", closeSideBarOnClickOuside);
+
+    const burgerBtn = document.getElementById('siteBurgerButton');
+    burgerBtn.addEventListener('click', () => {
+      const sideBar = document.getElementById('siteSideBar');
+
+      if(sideBar.classList.contains('active')){
+        closeSideBar();
+      } else {
+        openSideBar();
+      }
+    });
+  </script>
 </nav>
