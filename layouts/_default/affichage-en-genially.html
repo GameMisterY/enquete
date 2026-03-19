@@ -7,7 +7,9 @@
   {{ $show_sidebar := not (eq .Params.sidebar false) }}
 
   <div class="genially">
-    <iframe id="genially-iframe" title="MisterY" frameborder="0" width="1000" height="400" style="top: 0px; left: 0; width: 100%; height: 100%;" src={{.Params.link}} type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all"></iframe>
+    <!-- <div class="genially-iframe-container" id="genially-iframe-container"> -->
+      <iframe id="genially-iframe" title="MisterY" frameborder="0" width="1000" height="400" style="top: 0px; left: 0; width: 100%; height: 100%;" src={{.Params.link}} type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all"></iframe>
+    <!-- </div> -->
   </div>
   <style>
     .genially {
@@ -26,11 +28,16 @@
         padding-left: 20rem;
       {{ end }}
     }
-    .genially-content {
+    .genially-iframe-container {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    /*.genially-content {
       color: white;
       font-size: 2rem;
       padding-top: 50px;
-    }
+    }*/
     @media (max-width: 500px) {
       .genially {
         padding-left: 0rem;
@@ -43,6 +50,7 @@
     function updateIframeStyle() {
       const header = document.querySelector('.header');
       const iframe = document.querySelector('#genially-iframe');
+      const iframeContainer = document.querySelector('#genially-iframe-container');
 
       if (!header || !iframe) {
         return;
@@ -53,6 +61,7 @@
 
       iframe.style.top = `${headerHeight}px`;
       iframe.style.height = `${remainingHeight}px`;
+      // iframeContainer.style.height = `${remainingHeight - 200}px`
     }
 
     document.addEventListener('DOMContentLoaded', updateIframeStyle);
