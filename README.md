@@ -76,6 +76,16 @@ icon: suspect.png
 
 L'enquête est maintenant créée avec le lien https://gamemistery.github.io/enquete/MonEnquete/
 
+3. (Optionel) Ajouter des mots de passes sur les dossiers (ne marche que avec affichage-en-dossiers)
+```md
+---
+layout: "affichage-en-dossiers"
+locked:
+  - {file: "NonDeMonFicher.pdf", password: "MonMotDePasse" }
+  - {file: "NonDeMonFicher.png", password: "MonMotDePasse" }
+---
+```
+
 ### Affichage en genially
 
 Pour créer un onglet avec un genially intégré:

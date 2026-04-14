@@ -5,7 +5,11 @@
   {{ $background_image := $background_image.Resize "x4000" }}
 
   {{ $folder_image := resources.Get "folder.svg" | fingerprint }}
+  {{ $locked_folder_image := resources.Get "folder-locked.svg" | fingerprint }}
   {{ $show_sidebar := not (eq .Params.sidebar false) }}
+
+  {{ $locked_folders := .Params.locked }}
+  {{ $lock_password := false }}
 
   <div class="archives">
     <div class="archives-description">
@@ -19,15 +23,39 @@
         {{ if not (eq .Name "index.md") }}
           {{ $basename := index (split .Name ".") 0}}
           {{ $folder_link := printf "%s%s" $.RelPermalink .Name }}
-              <a class="archives-folder" onclick="openOverlay({{ $folder_link }})">
+            {{ if $locked_folders }}
+              {{ $lock_infos := where $locked_folders "file" .Name }}
+              {{ $lock_info := index $lock_infos 0 }}
+              {{ $lock_password = $lock_info.password }}
+            {{ end }}
+
+            <a class="archives-folder" onclick="onClickFolder({{$lock_password}}, {{ $folder_link }})">
+              {{ if $lock_password }}
+                <img src="{{ $locked_folder_image.Permalink }}"/>
+              {{ else }}
                 <img src="{{ $folder_image.Permalink }}"/>
+              {{ end }}
+
               <p>{{ title $basename }}</p>
             </a>
-
         {{ end }}
       {{ end }}
     </div>
   </div>
+  <script>
+    function onClickFolder(password, folder_link){
+      if(password !== false && password !== null && password !== undefined) {
+        const input = prompt("Entrez le mot de passe");
+        if(input.replace(/[\u2019]/g, "'") == password){
+          openOverlay(folder_link);
+        } else {
+          alert("Mauvais mot de passe");
+        }
+      } else {
+        openOverlay(folder_link);
+      }
+    }
+  </script>
   <style>
     .archives {
       background-image: url( {{ $background_image.Permalink  }});
