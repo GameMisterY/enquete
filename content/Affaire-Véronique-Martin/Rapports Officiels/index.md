@@ -5,7 +5,7 @@ layout: "affichage-en-dossiers"
 icon: pc.png
 order: 5
 locked:
-  - {file: "Note interne.pdf", password: "Z52Mxp8fr" }
+  - {file: "Note interne.pdf", password: "581rE" }
 ---
 
 
