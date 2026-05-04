@@ -1,6 +1,8 @@
 <div class="overlay" id="overlay" >
-  <object class="overlay-pdf" id="overlay-pdf" data="" type="application/pdf" width="100%" height="100%">
-  </object>
+ <!-- <object class="overlay-pdf" id="overlay-pdf" data="" type="application/pdf" width="100%" height="100%">
+  </object> -->
+  <iframe class="overlay-pdf" id="overlay-pdf" src="" style="border:none; width:100%; height:100%;">
+  </iframe>
   <div class="overlay-popup">
     <img id="overlay-img" src="">
   </div>
@@ -18,7 +20,9 @@
       document.getElementById('overlay').classList.add('active');
       document.getElementById('overlay-img').style.display = "none";
       document.getElementById('overlay-pdf').style.display = "block";
-      document.getElementById('overlay-pdf').data = source;
+      // document.getElementById('overlay-pdf').data = source;
+      document.getElementById('overlay-pdf').src = source;
+
       document.body.classList.add("no-scroll");
     } else {
       window.location.href = source;
